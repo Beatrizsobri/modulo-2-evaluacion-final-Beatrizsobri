@@ -4,9 +4,8 @@ const submitBtn = document.querySelector('.js-submit');
 const resultList = document.querySelector('.js-results');
 const favoriteList = document.querySelector('.js-favoriteList');
 let showList = [];
-let showListPaintArr = [];
-const favoritesShows = [];
-let fav = '';
+let favoritesShows = [];
+
 
 
 
@@ -17,10 +16,26 @@ function searchShow() {
       showList = data;
       paintSearchResult();
       listenShowList();
+      paintFavorite();
     })
     .catch(function (err) {
       console.log('Error al traer los datos del servidor', err);
     });
+}
+
+function setLocalStorage() {
+  localStorage.setItem("favorite", JSON.stringify(favoritesShows));
+}
+
+function getLocalStorage() {
+
+  const localStorageFavorites = JSON.parse(localStorage.getItem('favorite'));
+  if (localStorageFavorites !== null) {
+    favoritesShows = localStorageFavorites;
+    paintFavorite();
+  } else {
+    searchShow();
+  }
 }
 
 function paintSearchResult() {
@@ -46,6 +61,7 @@ function paintSearchResult() {
     htmlCode += `</li>`;
     resultList.innerHTML = htmlCode;
   }
+  listenShowList();
 }
 
 
@@ -75,15 +91,14 @@ function toggleFavorites(ev) {
       }
     }
   }
-  console.log(index);
-  console.log(favoritesShows);
+  setLocalStorage();
   paintFavorite();
-  //   paintSearchResult();
-  //   paintSearchResult(clickedId);
+  listenShowList();
+  paintSearchResult();
 }
 
 function listenShowList() {
-  showListPaintArr = document.querySelectorAll('.js-showItem');
+  const showListPaintArr = document.querySelectorAll('.js-showItem');
   for (let i = 0; i < showListPaintArr.length; i++) {
     showListPaintArr[i].addEventListener('click', toggleFavorites);
   }
@@ -95,3 +110,5 @@ function handler(event) {
 }
 
 submitBtn.addEventListener('click', handler);
+
+getLocalStorage();
