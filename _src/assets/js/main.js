@@ -5,6 +5,7 @@ const submitBtn = document.querySelector('.js-submit');
 const resultList = document.querySelector('.js-results');
 let showList = [];
 let showListPaintArr = [];
+const favoritesShows = [];
 
 
 function searchShow() {
@@ -16,12 +17,21 @@ function searchShow() {
       paintSearchResult();
       listenShowList();
     })
+    .catch(function (err) {
+      console.log("Error al traer los datos del servidor", err);
+    });
 }
 
 function paintSearchResult() {
   let htmlCode = '';
   for (let i = 0; i < showList.length; i++) {
-    htmlCode += `<li class="js-showItem">`;
+    const favoriteIndex = favoritesShows.indexOf(showList[i].show.id);
+    const isFavorite = favoriteIndex !== -1;
+    if (isFavorite === true) {
+      htmlCode += `<li class="js-showItem show__item--favorite" id=${showList[i].show.id}>`;
+    } else {
+      htmlCode += `<li class="js-showItem" id=${showList[i].show.id}>`;
+    }
     htmlCode += `<h3>${showList[i].show.name}</h3>`;
     htmlCode += `<div>`;
     if (!!showList[i].show.image === true) {
@@ -36,7 +46,16 @@ function paintSearchResult() {
 }
 
 function toggleFavorites(ev) {
-  console.log('pintando favoritos');
+  const clickedId = parseInt(ev.currentTarget.id);
+  const favoriteIndex = favoritesShows.indexOf(clickedId);
+  const isFavorite = favoriteIndex !== -1;
+  if (isFavorite === true) {
+    favoritesShows.splice(parseInt(favoriteIndex, 1));
+  } else {
+    favoritesShows.push(parseInt(ev.currentTarget.id));
+  }
+  paintSearchResult();
+  listenShowList();
 }
 
 function listenShowList() {
