@@ -1,11 +1,12 @@
 'use strict';
 const input = document.querySelector('.js-input');
-// const inputValue = input.value;
 const submitBtn = document.querySelector('.js-submit');
 const resultList = document.querySelector('.js-results');
 let showList = [];
 let showListPaintArr = [];
 const favoritesShows = [];
+let fav = '';
+
 
 
 function searchShow() {
@@ -13,12 +14,11 @@ function searchShow() {
     .then(response => response.json())
     .then(data => {
       showList = data;
-      console.log(data);
       paintSearchResult();
       listenShowList();
     })
     .catch(function (err) {
-      console.log("Error al traer los datos del servidor", err);
+      console.log('Error al traer los datos del servidor', err);
     });
 }
 
@@ -28,7 +28,7 @@ function paintSearchResult() {
     const favoriteIndex = favoritesShows.indexOf(showList[i].show.id);
     const isFavorite = favoriteIndex !== -1;
     if (isFavorite === true) {
-      htmlCode += `<li class="js-showItem show__item--favorite" id=${showList[i].show.id}>`;
+      htmlCode += `<li class="js-showItem show__item--favorite" id=${showList[i].show.id} data-url="${showList[i].show.image.medium || showList[i].show.image.original}" data-name="${showList[i].show.name}">`;
     } else {
       htmlCode += `<li class="js-showItem" id=${showList[i].show.id}>`;
     }
@@ -47,24 +47,28 @@ function paintSearchResult() {
 
 function toggleFavorites(ev) {
   const clickedId = parseInt(ev.currentTarget.id);
-  const favoriteIndex = favoritesShows.indexOf(clickedId);
-  const isFavorite = favoriteIndex !== -1;
-  console.log(favoritesShows);
+  const index = favoritesShows.findIndex(function (show, index) {
+    return show.id === clickedId;
+  });
+  const isFavorite = index !== -1;
   if (isFavorite === true) {
-    favoritesShows.splice(parseInt(favoriteIndex), 1);
+    favoritesShows.splice(index, 1);
   } else {
-    favoritesShows.push(parseInt(ev.currentTarget.id));
+    for (let i = 0; i < showList.length; i++) {
+      if (showList[i].show.id === clickedId) {
+        favoritesShows.push(showList[i].show);
+      }
+
+    }
   }
+  console.log(index);
   console.log(favoritesShows);
-  paintSearchResult();
-  listenShowList();
 }
 
 function listenShowList() {
   showListPaintArr = document.querySelectorAll('.js-showItem');
-  console.log(showListPaintArr)
   for (let i = 0; i < showListPaintArr.length; i++) {
-    showListPaintArr[i].addEventListener('click', toggleFavorites)
+    showListPaintArr[i].addEventListener('click', toggleFavorites);
   }
 }
 
