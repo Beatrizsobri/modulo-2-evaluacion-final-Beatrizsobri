@@ -4,6 +4,7 @@ const input = document.querySelector('.js-input');
 const submitBtn = document.querySelector('.js-submit');
 const resultList = document.querySelector('.js-results');
 let showList = [];
+let showListPaintArr = [];
 
 
 function searchShow() {
@@ -13,14 +14,14 @@ function searchShow() {
       showList = data;
       console.log(data);
       paintSearchResult();
+      listenShowList();
     })
 }
 
 function paintSearchResult() {
   let htmlCode = '';
   for (let i = 0; i < showList.length; i++) {
-    debugger;
-    htmlCode += `<li>`;
+    htmlCode += `<li class="js-showItem">`;
     htmlCode += `<h3>${showList[i].show.name}</h3>`;
     htmlCode += `<div>`;
     if (!!showList[i].show.image === true) {
@@ -31,6 +32,18 @@ function paintSearchResult() {
     htmlCode += `</div>`;
     htmlCode += `</li>`;
     resultList.innerHTML = htmlCode;
+  }
+}
+
+function toggleFavorites(ev) {
+  console.log('pintando favoritos');
+}
+
+function listenShowList() {
+  showListPaintArr = document.querySelectorAll('.js-showItem');
+  console.log(showListPaintArr)
+  for (let i = 0; i < showListPaintArr.length; i++) {
+    showListPaintArr[i].addEventListener('click', toggleFavorites)
   }
 }
 

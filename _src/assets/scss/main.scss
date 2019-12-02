@@ -1,2 +1,7 @@
 @import 'core/settings';
 @import 'core/links';
+
+.result__container {
+  display: flex;
+  flex-direction: row;
+}
