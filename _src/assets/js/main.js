@@ -49,11 +49,13 @@ function toggleFavorites(ev) {
   const clickedId = parseInt(ev.currentTarget.id);
   const favoriteIndex = favoritesShows.indexOf(clickedId);
   const isFavorite = favoriteIndex !== -1;
+  console.log(favoritesShows);
   if (isFavorite === true) {
-    favoritesShows.splice(parseInt(favoriteIndex, 1));
+    favoritesShows.splice(parseInt(favoriteIndex), 1);
   } else {
     favoritesShows.push(parseInt(ev.currentTarget.id));
   }
+  console.log(favoritesShows);
   paintSearchResult();
   listenShowList();
 }
