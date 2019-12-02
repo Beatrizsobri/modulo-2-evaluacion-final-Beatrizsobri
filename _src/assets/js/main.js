@@ -2,6 +2,7 @@
 const input = document.querySelector('.js-input');
 const submitBtn = document.querySelector('.js-submit');
 const resultList = document.querySelector('.js-results');
+const favoriteList = document.querySelector('.js-favoriteList');
 let showList = [];
 let showListPaintArr = [];
 const favoritesShows = [];
@@ -25,8 +26,10 @@ function searchShow() {
 function paintSearchResult() {
   let htmlCode = '';
   for (let i = 0; i < showList.length; i++) {
-    const favoriteIndex = favoritesShows.indexOf(showList[i].show.id);
-    const isFavorite = favoriteIndex !== -1;
+    const index = favoritesShows.findIndex(function (show, index) {
+      return show.id === showList[i].show.id;
+    });
+    const isFavorite = index !== -1;
     if (isFavorite === true) {
       htmlCode += `<li class="js-showItem show__item--favorite" id=${showList[i].show.id} data-url="${showList[i].show.image.medium || showList[i].show.image.original}" data-name="${showList[i].show.name}">`;
     } else {
@@ -45,6 +48,18 @@ function paintSearchResult() {
   }
 }
 
+
+function paintFavorite() {
+  let htmlFav = '';
+  for (let i = 0; i < favoritesShows.length; i++) {
+    htmlFav += `<li>`;
+    htmlFav += `<h3>${favoritesShows[i].name}</h3>`;
+    htmlFav += `<div><img src="${favoritesShows[i].image.medium}" alt=""></div>`;
+    htmlFav += `</li>`;
+  }
+  favoriteList.innerHTML = htmlFav;
+}
+
 function toggleFavorites(ev) {
   const clickedId = parseInt(ev.currentTarget.id);
   const index = favoritesShows.findIndex(function (show, index) {
@@ -58,11 +73,13 @@ function toggleFavorites(ev) {
       if (showList[i].show.id === clickedId) {
         favoritesShows.push(showList[i].show);
       }
-
     }
   }
   console.log(index);
   console.log(favoritesShows);
+  paintFavorite();
+  //   paintSearchResult();
+  //   paintSearchResult(clickedId);
 }
 
 function listenShowList() {
