@@ -13,10 +13,26 @@
          <h1>Buscador de series:</h1>
 
         <form action="post">
-            <input type="text" placeholder="Busca una serie">
-            <button type="submit">Search</button>
+            <input class="js-input" type="text" placeholder="Busca una serie">
+            <button class="js-submit" type="submit">Search</button>
         </form>
-        <ul></ul>
+        <section class="result__container">
+            <div>
+                 <h3>Mis series Favoritas:</h3>
+
+                <ul class="js-favoriteList">
+                    <li>
+                         <h3>Serie de prueba</h3>
+
+                        <div>
+                            <img src="" alt="">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <ul class="js-results"></ul>
+        </section>
+        <script src="./assets/js/main.js"></script>
     </body>
 
 </html>
