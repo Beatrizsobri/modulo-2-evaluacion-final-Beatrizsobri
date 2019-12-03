@@ -18,10 +18,10 @@ Para el desarrollo de este ejercicio hemos utilizado la siguiente API: http://ww
 6. Readme. 
 
 ## FUNCIONALIDADES JS. 
-## PRIMER PASO: TRAER INFORMACIÓN DE LA API CON LO DATOS INTRODUCIDOS EN EL CAMPO DEL BUSCADOR.
+#### PRIMER PASO: TRAER INFORMACIÓN DE LA API CON LO DATOS INTRODUCIDOS EN EL CAMPO DEL BUSCADOR.
 Al hacer clic sobre el botón de "Buscar", la aplicación se conecta al API de TVMaze para búsqueda de series. Por cada show contenido en el resultado de la búsqueda, se pinta una tarjeta donde mostramos una imagen de la serie y su título.
 
-## SEGUNDO PASO: AÑADIR SERIES A FAVORITOS.
+#### SEGUNDO PASO: AÑADIR SERIES A FAVORITOS.
 Una vez aparecen los resultados de búsqueda, podemos indicar cuáles son nuestras series favoritas. Para ello, al hacer clic sobre una serie, el color de fondo se intercambia, indicando así que es una serie favorita. Además. también, se muestra un listado en la parte izquierda de la pantalla, debajo del formulario de búsqueda, con las series favoritas.
 
 ## TERCER PASO: AÑADIR SERIES A FAVORITOS.
