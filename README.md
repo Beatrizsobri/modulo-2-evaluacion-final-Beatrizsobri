@@ -1,4 +1,4 @@
-![Adalab](_src/assets/images/images.png)
+![Adalab](_src/assets/images/images.jpeg)
 
 # Adalab web starter kit
 
