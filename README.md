@@ -19,5 +19,7 @@ Para el desarrollo de este ejercicio hemos utilizado la siguiente API: http://ww
 
 ## FUNCIONALIDADES JS. 
 ## PRIMER PASO: TRAER INFORMACIÓN DE LA API CON LO DATOS INTRODUCIDOS EN EL CAMPO DEL BUSCADOR.
-## SEGUNDO PASO: TRAER INFORMACIÓN DE LA API CON LO DATOS INTRODUCIDOS EN EL CAMPO DEL BUSCADOR.
+Al hacer clic sobre el botón de "Buscar", la aplicación se conecta al API de TVMaze para búsqueda de series. Por cada show contenido en el resultado de la búsqueda, se pinta una tarjeta donde mostramos una imagen de la serie y su título.
+
+## SEGUNDO PASO: 
 
