@@ -22,8 +22,6 @@ body {
   flex-direction: column;
   justify-content: flex-end;
 
-  // background-repeat: no-repeat;
-  // background-size: cover;
   &__content {
     margin: 20px;
   }
@@ -32,7 +30,6 @@ body {
     color: white;
     text-shadow: 1px 1px 2px black;
     font-size: 40px;
-    // filter: contrast(175%) brightness(3%);
   }
 
   &__search {
@@ -44,10 +41,12 @@ body {
   &__btn {
     border-radius: 4px;
     width: 50px;
+    height: 20px;
+    border: white solid;
+    background: white;
 
     &:hover {
       text-decoration: none;
-      // font-size: 2rem;
       text-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.5);
     }
   }
@@ -60,28 +59,54 @@ body {
   height: 70%;
   margin: 20px;
 
+
   &__favorite {
     width: 30%;
+    background: rgba(245, 245, 245, 0.788);
+    border-radius: 20px;
+    padding: 5px;
+    display: flex;
+
 
     &--title {
-      font-size: 20px;
+      font-size: 15px;
     }
 
     &--reset {
       width: 40px;
+      border: white solid;
+      background: white;
+      border-radius: 4px;
+
+      &:hover {
+        text-decoration: none;
+        text-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.5);
+
+      }
     }
-
-    &--list {}
-  }
-
-  &__search {
-    width: 70%;
 
     &--list {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: flex-start;
+    }
+  }
+
+  &__search {
+    width: 70%;
+    padding: 5px 10px 0px 10px;
+
+    &--title {
+      font-size: 20px;
+    }
+
+    &--list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+
 
     }
   }
@@ -95,7 +120,8 @@ body {
   width: 142px;
   height: 138px;
   padding: 3px;
-
+  border-radius: 15px;
+  margin: 2px;
 
   &--title {
     font-size: 15px;
@@ -107,6 +133,28 @@ body {
   }
 }
 
+.favorite {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 142px;
+  height: 138px;
+  padding: 3px;
+  border-radius: 15px;
+  margin: 2px;
+
+  &--title {
+    font-size: 15px;
+    color: rgb(10, 15, 15);
+  }
+
+  &--image {
+    width: 77px;
+  }
+
+}
+
 .show__item--favorite {
-  background-color: blue;
+  background-color: rgba(255, 255, 255, 0.781);
 }

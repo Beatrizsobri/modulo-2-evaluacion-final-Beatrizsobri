@@ -68,16 +68,16 @@ function paintSearchResult() {
 function paintFavorite() {
   let htmlFav = "";
   for (let i = 0; i < favoritesShows.length; i++) {
-    htmlFav += `<li class="js-favoriteInput" id="${favoritesShows[i].id}">`;
-    htmlFav += `<div><h3>${favoritesShows[i].name}</h3><i class="far fa-times-circle"></i></div>`;
+    htmlFav += `<li class="favorite js-favoriteInput" id="${favoritesShows[i].id}">`;
+    htmlFav += `<h3 class="favorite--title" >${favoritesShows[i].name}</h3>`;
     htmlFav += `<div>`;
     if (!!favoritesShows[i].image === true) {
-      htmlFav += `<img src="${favoritesShows[i].image.medium ||
-        favoritesShows[i].image.original}" alt="imagen de ${
+      htmlFav += `<img class="favorite--image" src="${favoritesShows[i].image
+        .medium || favoritesShows[i].image.original}" alt="imagen de ${
         favoritesShows[i].name
       }">`;
     } else {
-      htmlFav += `<img src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV" alt="imagen por defecto">`;
+      htmlFav += `<img class="favorite--image" src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV" alt="imagen por defecto">`;
     }
     htmlFav += `</div>`;
     htmlFav += `</li>`;
