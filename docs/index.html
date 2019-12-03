@@ -10,28 +10,32 @@
     </head>
     
     <body>
-         <h1>Buscador de series:</h1>
+        <header class="header">
+            <div class="header__content">
+                 <h1 class="header__title">Buscador de series:</h1>
 
-        <form action="post">
-            <input class="js-input" type="text" placeholder="Busca una serie">
-            <button class="js-submit" type="submit">Search</button>
-        </form>
-        <section class="result__container">
-            <div>
-                 <h3>Mis series Favoritas:</h3>
-
-                <ul class="js-favoriteList">
-                    <li>
-                         <h3>Serie de prueba</h3>
-
-                        <div>
-                            <img src="" alt="">
-                        </div>
-                    </li>
-                </ul>
+                <form action="post">
+                    <input class="header__search js-input" type="text" placeholder="Busca una serie"
+                    />
+                    <button class="header__btn js-submit" type="submit">Buscar</button>
+                </form>
             </div>
-            <ul class="js-results"></ul>
-        </section>
+        </header>
+        <main class="result">
+            <div class="result__favorite">
+                <div>
+                     <h3 class="result__favorite--title">Mis series favoritas:</h3>
+
+                    <button class="result__favorite--reset js-reset">Reset</button>
+                </div>
+                <ul class="result__favorite--list js-favoriteList"></ul>
+            </div>
+            <div class="result__search">
+                 <h3 class="result__search--title">Mis busquedas:</h3>
+
+                <ul class=" result__search--list js-results"></ul>
+            </div>
+        </main>
         <script src="./assets/js/main.js"></script>
     </body>
 
