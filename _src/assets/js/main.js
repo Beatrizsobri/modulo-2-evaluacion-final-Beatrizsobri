@@ -43,32 +43,33 @@ function paintSearchResult() {
     });
     const isFavorite = index !== -1;
     if (isFavorite === true) {
-      htmlCode += `<li class="js-showItem show__item--favorite" id=${showList[i].show.id}>`;
+      htmlCode += `<li class="js-showItem show show__item--favorite" id=${showList[i].show.id}>`;
     } else {
-      htmlCode += `<li class="js-showItem" id=${showList[i].show.id}>`;
+      htmlCode += `<li class="js-showItem show" id=${showList[i].show.id}>`;
     }
-    htmlCode += `<h3>${showList[i].show.name}</h3>`;
-    htmlCode += `<div>`;
+    htmlCode += `<h3 class="show--title">${showList[i].show.name}</h3>`;
+    htmlCode += `<div >`;
     if (!!showList[i].show.image === true) {
-      htmlCode += `<img src="${showList[i].show.image.medium ||
-        showList[i].show.image.original}" alt="imagen de ${
+      htmlCode += `<img class="show--image" src="${showList[i].show.image
+        .medium || showList[i].show.image.original}" alt="imagen de ${
         showList[i].show.name
       }">`;
     } else {
-      htmlCode += `<img src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV" alt="imagen por defecto">`;
+      htmlCode += `<img class="show--image" src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV" alt="imagen por defecto">`;
     }
     htmlCode += `</div>`;
     htmlCode += `</li>`;
   }
   resultList.innerHTML = htmlCode;
   listenShowList();
+  listenFavList();
 }
 
 function paintFavorite() {
   let htmlFav = "";
   for (let i = 0; i < favoritesShows.length; i++) {
-    htmlFav += `<li class="js-favoriteInput">`;
-    htmlFav += `<h3>${favoritesShows[i].name}</h3>`;
+    htmlFav += `<li class="js-favoriteInput" id="${favoritesShows[i].id}">`;
+    htmlFav += `<div><h3>${favoritesShows[i].name}</h3><i class="far fa-times-circle"></i></div>`;
     htmlFav += `<div>`;
     if (!!favoritesShows[i].image === true) {
       htmlFav += `<img src="${favoritesShows[i].image.medium ||
@@ -82,6 +83,7 @@ function paintFavorite() {
     htmlFav += `</li>`;
   }
   favoriteList.innerHTML = htmlFav;
+  listenFavList();
 }
 
 function toggleFavorites(ev) {
@@ -100,8 +102,9 @@ function toggleFavorites(ev) {
     }
   }
   setLocalStorage();
-  paintFavorite();
   listenShowList();
+  listenFavList();
+  paintFavorite();
   paintSearchResult();
 }
 
@@ -111,25 +114,25 @@ function listenShowList() {
     showListPaintArr[i].addEventListener("click", toggleFavorites);
   }
 }
-
-// function listenFavoriteList() {
-//   const favoriteListPaintArr = document.querySelectorAll(".js-favoriteInput");
-//   for (let i = 0; i < favoriteListPaintArr.length; i++) {
-//     favoriteListPaintArr[i].addEventListener("click", toggleFavorites);
-//   }
-// }
-
+function listenFavList() {
+  const favListPaintArr = document.querySelectorAll(".js-favoriteInput");
+  for (let i = 0; i < favListPaintArr.length; i++) {
+    favListPaintArr[i].addEventListener("click", toggleFavorites);
+  }
+}
 function reset() {
   favoritesShows.splice(0, favoritesShows.length);
   console.log(favoritesShows);
   paintFavorite();
   listenShowList();
   paintSearchResult();
+  setLocalStorage();
 }
 
 function handler(event) {
   event.preventDefault();
   searchShow();
+  paintFavorite();
 }
 
 resetBtn.addEventListener("click", reset);
