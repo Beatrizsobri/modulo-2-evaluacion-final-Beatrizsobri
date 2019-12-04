@@ -4,6 +4,7 @@ const submitBtn = document.querySelector(".js-submit");
 const resultList = document.querySelector(".js-results");
 const favoriteList = document.querySelector(".js-favoriteList");
 const resetBtn = document.querySelector(".js-reset");
+const favoriteContainer = document.querySelector(".js-resultFavorite");
 let showList = [];
 let favoritesShows = [];
 
@@ -106,6 +107,7 @@ function toggleFavorites(ev) {
   listenFavList();
   paintFavorite();
   paintSearchResult();
+  showFavoriteSection();
 }
 
 function listenShowList() {
@@ -127,12 +129,23 @@ function reset() {
   listenShowList();
   paintSearchResult();
   setLocalStorage();
+  showFavoriteSection();
+}
+
+function showFavoriteSection() {
+  debugger;
+  if (favoritesShows.length > 0) {
+    favoriteContainer.classList.remove("hidden");
+  } else {
+    favoriteContainer.classList.add("hidden");
+  }
 }
 
 function handler(event) {
   event.preventDefault();
   searchShow();
   paintFavorite();
+  showFavoriteSection();
 }
 
 resetBtn.addEventListener("click", reset);
