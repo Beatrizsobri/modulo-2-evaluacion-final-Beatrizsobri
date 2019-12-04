@@ -9,14 +9,17 @@
 body {
   height: 100vh;
   background: rgb(22, 159, 117);
-  background: linear-gradient(0deg, rgba(22, 159, 117, 0.500437675070028) 0%, rgba(55, 79, 200, 0.5592612044817927) 100%);
-  ;
+  background: linear-gradient(
+    0deg,
+    rgba(22, 159, 117, 0.500437675070028) 0%,
+    rgba(55, 79, 200, 0.5592612044817927) 100%
+  );
   background-size: cover;
 }
 
 .header {
   height: 30%;
-  background-image: url('../images/images.jpeg');
+  background-image: url("../images/images.jpeg");
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -35,6 +38,7 @@ body {
     border-radius: 4px;
     height: 20px;
     width: 200px;
+    border: white solid;
   }
 
   &__btn {
@@ -55,19 +59,21 @@ body {
   width: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
   height: 70%;
-  margin: 20px;
-
+  padding: 15px;
 
   &__favorite {
-    width: 30%;
+    width: 25%;
     background: rgba(245, 245, 245, 0.788);
     border-radius: 20px;
-    padding: 5px;
+    padding: 10px;
     display: flex;
-
+    flex-direction: column;
+    overflow-y: auto;
 
     &--title {
+      margin-top: 5px;
       font-size: 15px;
     }
 
@@ -80,7 +86,6 @@ body {
       &:hover {
         text-decoration: none;
         text-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.5);
-
       }
     }
 
@@ -95,6 +100,7 @@ body {
   &__search {
     width: 70%;
     padding: 5px 10px 0px 10px;
+    overflow-y: auto;
 
     &--title {
       font-size: 20px;
@@ -105,8 +111,6 @@ body {
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: flex-start;
-
-
     }
   }
 }
@@ -125,6 +129,7 @@ body {
   &--title {
     font-size: 15px;
     color: rgb(10, 15, 15);
+    text-align: center;
   }
 
   &--image {
@@ -137,23 +142,28 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 142px;
-  height: 138px;
+  width: 100px;
+  height: 110px;
   padding: 3px;
   border-radius: 15px;
-  margin: 2px;
+  filter: grayscale(70%);
 
   &--title {
-    font-size: 15px;
+    font-size: 10px;
     color: rgb(10, 15, 15);
+    text-align: center;
   }
 
   &--image {
-    width: 77px;
+    width: 50px;
   }
-
 }
 
 .show__item--favorite {
   background-color: rgba(255, 255, 255, 0.781);
+  font-style: italic;
+}
+
+.hidden {
+  display: none;
 }

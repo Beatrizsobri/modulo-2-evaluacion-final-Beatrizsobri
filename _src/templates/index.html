@@ -1,40 +1,39 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Adalab Web Starter Kit</title>
-    <link rel="icon" href="./favicon.png" />
-    <link rel="stylesheet" href="./assets/css/main.css" />
-  </head>
 
-  <body>
-    <header class="header">
-      <div class="header__content">
-        <h1 class="header__title">Buscador de series:</h1>
-        <form action="post">
-          <input
-            class="header__search js-input"
-            type="text"
-            placeholder="Busca una serie"
-          />
-          <button class="header__btn js-submit" type="submit">Buscar</button>
-        </form>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adalab Web Starter Kit</title>
+  <link rel="icon" href="./favicon.png" />
+  <script src="https://kit.fontawesome.com/61294e7035.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./assets/css/main.css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__content">
+      <h1 class="header__title">Buscador de series:</h1>
+      <form action="post">
+        <input class="header__search js-input" type="text" placeholder="Busca una serie" />
+        <button class="header__btn js-submit" type="submit">Buscar</button>
+      </form>
+    </div>
+  </header>
+  <main class="result">
+    <div class="result__favorite">
+      <div>
+        <h3 class="result__favorite--title">Mis series favoritas:</h3>
+        <button class="result__favorite--reset js-reset">Reset</button>
       </div>
-    </header>
-    <main class="result">
-      <div class="result__favorite">
-        <div>
-          <h3 class="result__favorite--title">Mis series favoritas:</h3>
-          <button class="result__favorite--reset js-reset">Reset</button>
-        </div>
-        <ul class="result__favorite--list js-favoriteList"></ul>
-      </div>
-      <div class="result__search">
-        <h3 class="result__search--title">Mis busquedas:</h3>
-        <ul class=" result__search--list js-results"></ul>
-      </div>
-    </main>
-    <script src="./assets/js/main.js"></script>
-  </body>
+      <ul class="result__favorite--list js-favoriteList"></ul>
+    </div>
+    <div class="result__search">
+      <h3 class="result__search--title">Mis busquedas:</h3>
+      <ul class=" result__search--list js-results"></ul>
+    </div>
+  </main>
+  <script src="./assets/js/main.js"></script>
+</body>
+
 </html>
