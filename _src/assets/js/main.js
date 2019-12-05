@@ -48,6 +48,7 @@ function paintSearchResult() {
       htmlCode += `<li class="js-showItem show" id=${showList[i].show.id}>`;
     }
     htmlCode += `<h3 class="show--title">${showList[i].show.name}</h3>`;
+    htmlCode += `<p>${showList[i].show.genres.join("#")}</p>`;
     htmlCode += `<div >`;
     if (!!showList[i].show.image === true) {
       htmlCode += `<img class="show--image" src="${showList[i].show.image
@@ -108,10 +109,19 @@ function toggleFavorites(ev) {
   paintSearchResult();
 }
 
+function logNames(ev) {
+  const clickedId = parseInt(ev.currentTarget.id);
+  for (let i = 0; i < showList.length; i++) {
+    if (showList[i].show.id === clickedId) {
+      console.log(showList[i].show.name);
+    }
+  }
+}
+
 function listenShowList() {
   const showListPaintArr = document.querySelectorAll(".js-showItem");
   for (let i = 0; i < showListPaintArr.length; i++) {
-    showListPaintArr[i].addEventListener("click", toggleFavorites);
+    showListPaintArr[i].addEventListener("click", logNames);
   }
 }
 function listenFavList() {
