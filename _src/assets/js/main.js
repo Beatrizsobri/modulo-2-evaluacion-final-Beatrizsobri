@@ -17,12 +17,15 @@ function getLocalStorage() {
   if (localStorageFavorites !== null) {
     favoritesShows = localStorageFavorites;
     paintFavorite();
+    showFavoriteSection();
   } else {
     searchShow();
+    showFavoriteSection();
   }
 }
 
 function searchShow() {
+
   fetch(`http://api.tvmaze.com/search/shows?q=${input.value}`)
     .then(response => response.json())
     .then(data => {
@@ -31,7 +34,7 @@ function searchShow() {
       listenShowList();
       paintFavorite();
     })
-    .catch(function(err) {
+    .catch(function (err) {
       console.log("Error al traer los datos del servidor", err);
     });
 }
@@ -39,7 +42,7 @@ function searchShow() {
 function paintSearchResult() {
   let htmlCode = "";
   for (let i = 0; i < showList.length; i++) {
-    const index = favoritesShows.findIndex(function(show, index) {
+    const index = favoritesShows.findIndex(function (show, index) {
       return show.id === showList[i].show.id;
     });
     const isFavorite = index !== -1;
@@ -89,7 +92,7 @@ function paintFavorite() {
 
 function toggleFavorites(ev) {
   const clickedId = parseInt(ev.currentTarget.id);
-  const index = favoritesShows.findIndex(function(show, index) {
+  const index = favoritesShows.findIndex(function (show, index) {
     return show.id === clickedId;
   });
   const isFavorite = index !== -1;
@@ -116,12 +119,14 @@ function listenShowList() {
     showListPaintArr[i].addEventListener("click", toggleFavorites);
   }
 }
+
 function listenFavList() {
   const favListPaintArr = document.querySelectorAll(".js-delete");
   for (let i = 0; i < favListPaintArr.length; i++) {
     favListPaintArr[i].addEventListener("click", toggleFavorites);
   }
 }
+
 function reset() {
   favoritesShows.splice(0, favoritesShows.length);
   console.log(favoritesShows);
@@ -150,6 +155,4 @@ function handler(event) {
 resetBtn.addEventListener("click", reset);
 
 submitBtn.addEventListener("click", handler);
-
 getLocalStorage();
-showFavoriteSection();
