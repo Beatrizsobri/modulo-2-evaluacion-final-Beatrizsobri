@@ -69,8 +69,8 @@ function paintSearchResult() {
 function paintFavorite() {
   let htmlFav = "";
   for (let i = 0; i < favoritesShows.length; i++) {
-    htmlFav += `<li class="favorite js-favoriteInput" id="${favoritesShows[i].id}"><i class="far fa-trash-alt favorite--icon js-delete" id="${favoritesShows[i].id}"></i>`;
-    htmlFav += `<h3 class="favorite--title" >${favoritesShows[i].name}</h3>`;
+    htmlFav += `<li class="favorite js-favoriteInput" ><i class="far fa-trash-alt favorite--icon js-delete" id="${favoritesShows[i].id}"></i>`;
+    htmlFav += `<div class="favorite__container"><h3 class="favorite--title" >${favoritesShows[i].name}</h3>`;
     htmlFav += `<div>`;
     if (!!favoritesShows[i].image === true) {
       htmlFav += `<img class="favorite--image" src="${favoritesShows[i].image
@@ -80,7 +80,7 @@ function paintFavorite() {
     } else {
       htmlFav += `<img class="favorite--image" src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV" alt="imagen por defecto">`;
     }
-    htmlFav += `</div>`;
+    htmlFav += `</div></div>`;
     htmlFav += `</li>`;
   }
   favoriteList.innerHTML = htmlFav;
@@ -133,7 +133,6 @@ function reset() {
 }
 
 function showFavoriteSection() {
-  debugger;
   if (favoritesShows.length > 0) {
     favoriteContainer.classList.remove("hidden");
   } else {
@@ -153,3 +152,4 @@ resetBtn.addEventListener("click", reset);
 submitBtn.addEventListener("click", handler);
 
 getLocalStorage();
+showFavoriteSection();
