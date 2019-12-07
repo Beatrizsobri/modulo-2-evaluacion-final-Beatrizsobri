@@ -69,7 +69,7 @@ function paintSearchResult() {
 function paintFavorite() {
   let htmlFav = "";
   for (let i = 0; i < favoritesShows.length; i++) {
-    htmlFav += `<li class="favorite js-favoriteInput" id="${favoritesShows[i].id}"><i class="far fa-trash-alt favorite--icon js-delete"></i>`;
+    htmlFav += `<li class="favorite js-favoriteInput" id="${favoritesShows[i].id}"><i class="far fa-trash-alt favorite--icon js-delete" id="${favoritesShows[i].id}"></i>`;
     htmlFav += `<h3 class="favorite--title" >${favoritesShows[i].name}</h3>`;
     htmlFav += `<div>`;
     if (!!favoritesShows[i].image === true) {
@@ -117,7 +117,7 @@ function listenShowList() {
   }
 }
 function listenFavList() {
-  const favListPaintArr = document.querySelectorAll(".js-favoriteInput");
+  const favListPaintArr = document.querySelectorAll(".js-delete");
   for (let i = 0; i < favListPaintArr.length; i++) {
     favListPaintArr[i].addEventListener("click", toggleFavorites);
   }
